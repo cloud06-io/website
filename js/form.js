@@ -29,14 +29,14 @@ var contactForm = function() {
 
         $.ajax({     
             type: "POST",
-            url: "https://contactform.frederic-henri.workers.dev/",
+            url: "/contact",
             contentType: "application/x-www-form-urlencoded",
             data: $(form).serialize(),
 
-            beforeSend: function() { 
-              spinner.css('display', 'block');
-            },
+            spinner.css('display', 'block');
+
             success: function(msg) {
+              console.log(msg)
               if (msg == 'OK') {
                 $('#form-message-warning').hide();
                 setTimeout(function(){
@@ -61,12 +61,14 @@ var contactForm = function() {
                 }, 1400);
                    
               } else {
+                console.log(msg)
                 $('#form-message-warning').html(msg);
                 $('#form-message-warning').fadeIn();
                 spinner.css('display', 'none');
               }
             },
-            error: function() {
+            error: function(err) {
+              console.log(err)
               $('#form-message-warning').html("Something went wrong. Please try again.");
               $('#form-message-warning').fadeIn();
               spinner.css('display', 'none');
