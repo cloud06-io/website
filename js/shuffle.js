@@ -92,4 +92,4 @@
     m.init();
   }
 
-  var messenger = new Messenger($('#messenger'));
+var messenger = new Messenger($('#messenger'));
