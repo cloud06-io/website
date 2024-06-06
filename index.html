@@ -27,6 +27,24 @@
         "slnt" 0;
     }
 
+    #processing {
+      display: none; 
+    }
+
+    #form-message-warning, #form-message-success {
+      display: none; 
+    }
+
+    #form-message-warning {
+      color: red; 
+    }
+
+    #form-message-success {
+      color: #28a745;
+      font-size: 18px;
+      font-weight: bold; 
+    }
+
     #presentation {
       text-shadow: 0 2px 2px rgba(#000, 0.9);  
     }
@@ -275,7 +293,7 @@
                 <ul class="mt-3">
                     <li class="flex items-center">
                         <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-                            <img src="./img/mail-outline.svg" class="p-2">
+                            <img alt="send mail" src="./img/mail-outline.svg" class="p-2">
                         </div>
                         <span class="text-[#007bff] text-sm ml-3">
                             <strong>fhenri@cloud06.io</strong>
@@ -288,7 +306,7 @@
                 <ul class="mt-3">
                     <li class="flex items-center">
                         <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-                            <img src="./img/call-outline.svg" class="p-2">
+                            <img alt="whats app call" src="./img/call-outline.svg" class="p-2">
                         </div>
                         <span class="text-[#007bff] text-sm ml-3">
                             <strong>+33 6 23 89 86 24</strong>
@@ -315,22 +333,43 @@
             </div>
         </div>
         <form method="POST" id="contactForm" name="contactForm" class="ml-auo space-y-4">
+            <div id="form-message-warning" class="mb-4"></div> 
+            <div id="form-message-success" class="mb-4">
+              Your message was sent, thank you!
+            </div>
             <input type='text' placeholder='Name' required
+                name="name" id="name" 
                 class="w-full rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
             <input type='email' placeholder='Email' required
+                name="email" id="email" 
                 class="w-full rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
             <input type='text' placeholder='Subject'
+                name="subject" id="subject" 
                 class="w-full rounded-md py-2.5 px-4 border text-sm outline-[#007bff]" />
             <textarea placeholder='Message' rows="6" required
+                name="message" id="message" 
                 class="w-full rounded-md px-4 border text-sm pt-2.5 outline-[#007bff]"></textarea>
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAAcA8k2GSqjy-j_U"></div>
             <button type='submit'
                 class="text-white bg-[#007bff] hover:bg-blue-600 font-semibold rounded-md text-sm px-4 py-2.5 w-full">Send</button>
+            <button id="processing" type="button" class="bg-indigo-500 ..." disabled>
+              <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+                <!-- ... -->
+              </svg>
+              Processing...
+            </button>
         </form>
     </div>
 </section>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <script type="text/javascript" src="js/shuffle.js"></script>
+
+<script type="text/javascript" src="js/form.js"></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+
 
 </body>
 </html>
