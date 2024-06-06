@@ -3,29 +3,34 @@
 // Form
 var contactForm = function() {
   if ($('#contactForm').length > 0 ) {
+
     $( "#contactForm" ).validate( {
       rules: {
         name: "required",
         subject: "required",
         email: {
           required: true,
-          email: true
+          email:    true
         },
         message: {
-          required: true,
+          required:  true,
           minlength: 10
         }
       },
       messages: {
-        name:    "Please enter your name",
-        subject: "Please enter your subject",
-        email:   "Please enter a valid email address",
+        name:    "Please enter your Name",
+        subject: "Please enter your Subject",
+        email:   "Please enter a valid Email Address",
         message: "Please enter a message (min 10 characters)"
       },
-      /* submit via ajax */
       
-      submitHandler: function(form) {    
-        const spinner = $('.processing');
+      submitHandler: function(form) {
+
+        const submit = $('#submit');
+        submit.prop("disabled", true);
+
+        const spinner = $('#processing');
+        spinner.css('display', 'block');
 
         $.ajax({     
             type: "POST",
@@ -33,7 +38,6 @@ var contactForm = function() {
             contentType: "application/x-www-form-urlencoded",
             data: $(form).serialize(),
 
-            spinner.css('display', 'block');
 
             success: function(msg) {
               console.log(msg)
@@ -43,16 +47,12 @@ var contactForm = function() {
                   $('#contactForm').fadeIn();
                 }, 1000);
                 setTimeout(function(){
-                  $('#form-message-success').fadeIn();   
+                  $('#form-message-success').fadeIn();
                 }, 1400);
 
                 setTimeout(function(){
-                  $('#form-message-success').fadeOut();   
+                  $('#form-message-success').fadeOut();
                 }, 8000);
-
-                setTimeout(function(){
-                  $submit.css('display', 'none');
-                }, 1400);
 
                 setTimeout(function(){
                   $( '#contactForm' ).each(function() {
@@ -61,19 +61,20 @@ var contactForm = function() {
                 }, 1400);
                    
               } else {
-                console.log(msg)
                 $('#form-message-warning').html(msg);
                 $('#form-message-warning').fadeIn();
                 spinner.css('display', 'none');
+                submit.prop("disabled", false);
               }
             },
             error: function(err) {
-              console.log(err)
+              console.error(err);
               $('#form-message-warning').html("Something went wrong. Please try again.");
               $('#form-message-warning').fadeIn();
               spinner.css('display', 'none');
+              submit.prop("disabled", false);
             }
-          });        
+          });
         }
     });
   }
