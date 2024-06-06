@@ -30,6 +30,7 @@ var contactForm = function() {
         $.ajax({     
             type: "POST",
             url: "https://contactform.frederic-henri.workers.dev/",
+            contentType: "application/x-www-form-urlencoded",
             data: $(form).serialize(),
 
             beforeSend: function() { 
