@@ -1,5 +1,6 @@
 "use strict";
 
+
 // Form
 var contactForm = function() {
   if ($('#contactForm').length > 0 ) {
@@ -26,6 +27,14 @@ var contactForm = function() {
       
       submitHandler: function(form) {
 
+        function displayError(message) {
+          console.error(message);
+          $('#form-message-warning').fadeIn();
+          spinner.css('display', 'none');
+          submit.prop("disabled", false);
+          $('#form-message-warning').html("Something went wrong. Please try again.");
+        }
+
         const submit = $('#submit');
         submit.prop("disabled", true);
 
@@ -36,20 +45,16 @@ var contactForm = function() {
             type: "POST",
             url: "/contact",
             contentType: "application/x-www-form-urlencoded",
-            data: $(form).serialize(),
-
+            data: form.serialize(),
 
             success: function(msg) {
               console.log(msg)
               if (msg == 'OK') {
                 $('#form-message-warning').hide();
-                setTimeout(function(){
-                  $('#contactForm').fadeIn();
-                }, 1000);
+
                 setTimeout(function(){
                   $('#form-message-success').fadeIn();
                 }, 1400);
-
                 setTimeout(function(){
                   $('#form-message-success').fadeOut();
                 }, 8000);
@@ -61,18 +66,11 @@ var contactForm = function() {
                 }, 1400);
                    
               } else {
-                $('#form-message-warning').html(msg);
-                $('#form-message-warning').fadeIn();
-                spinner.css('display', 'none');
-                submit.prop("disabled", false);
+                displayError(msg);
               }
             },
             error: function(err) {
-              console.error(err);
-              $('#form-message-warning').html("Something went wrong. Please try again.");
-              $('#form-message-warning').fadeIn();
-              spinner.css('display', 'none');
-              submit.prop("disabled", false);
+              displayError(err);
             }
           });
         }
