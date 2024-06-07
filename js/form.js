@@ -49,7 +49,7 @@ var contactForm = function() {
 
             success: function(msg) {
               console.log(msg)
-              if (msg == 'OK') {
+              if (msg == 'success') {
                 $('#form-message-warning').hide();
 
                 setTimeout(function(){
