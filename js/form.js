@@ -63,7 +63,11 @@ var contactForm = function() {
                     this.reset();
                   });
                 }, 1400);
-                   
+                
+                setTimeout(function(){
+                  spinner.css('display', 'none');
+                }, 1400);
+
               } else {
                 displayError(msg);
               }
