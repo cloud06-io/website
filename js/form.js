@@ -5,7 +5,7 @@
 var contactForm = function() {
   if ($('#contactForm').length > 0 ) {
 
-    $( "#contactForm" ).validate( {
+    $("#contactForm").validate( {
       rules: {
         name: "required",
         subject: "required",
@@ -45,7 +45,7 @@ var contactForm = function() {
             type: "POST",
             url: "/contact",
             contentType: "application/x-www-form-urlencoded",
-            data: form.serialize(),
+            data: $(form).serialize(),
 
             success: function(msg) {
               console.log(msg)
