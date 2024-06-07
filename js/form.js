@@ -48,8 +48,7 @@ var contactForm = function() {
             data: $(form).serialize(),
 
             success: function(msg) {
-              console.log(msg)
-              if (msg == 'success') {
+              if (msg.message == 'Queued. Thank you.') {
                 $('#form-message-warning').hide();
 
                 setTimeout(function(){
