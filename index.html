@@ -15,11 +15,23 @@
   
   <link rel="stylesheet" type='text/css' href="./css/stylesheet.css">
   <link rel="stylesheet" type='text/css' href="./css/ribbon.css">
-  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="preload"/>
+  <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" defer/>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- https://stackoverflow.com/a/60477207/4296747 -->
+  <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript>
+      <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+          rel="stylesheet"
+          type="text/css"/>
+  </noscript>
 
   <style type='text/css' >
 
@@ -135,12 +147,15 @@
       <p class="mt-4 text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">
         Personal or Professional, always crafted with skill and care to complete and achieve the project goal.
       </p>
+      <p class="mt-4 text-base font-normal text-gray-500 sm:text-xl dark:text-gray-400">
+        Personal projects are hosted under the cloud06 domain.
+      </p>
     </div>
   </div>
 
   <div class="flex overflow-x-scroll pb-10">
-    <div class="flex flex-nowrap  ">
-      <div class="inline-block px-3">
+    <div class="flex flex-nowrap">
+      <div class="inline-block px-3 pl-6">
         <div class="w-screen h-80 md:w-port-img md:h-128 px-2 relative rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
           <div class="ribbon ribbon-top-left"><span class="bg-[#007bff]">react</span></div>
           <div class="mb-2 uppercase text-center text-gray-500 dark:text-gray-400">Virtual Visit for Met Museum</div>
@@ -169,7 +184,7 @@
       <div class="inline-block px-3">
         <div class="w-screen h-80 md:w-port-img md:h-128 px-2 relative rounded-lg shadow-md bg-white hover:shadow-xl transition-shadow duration-300 ease-in-out">
           <div class="ribbon ribbon-top-left"><span class="bg-[#007bff]">spring boot</span></div>
-          <div class="mb-2 uppercase text-center text-gray-500 dark:text-gray-400">To-Task</div>
+          <div class="mb-2 uppercase text-center text-gray-500 dark:text-gray-400">ToDo-Task</div>
           <div class="px-2">
             WTF Another ToDo App !?! Not only a ToDo but this app can manage Project and Task within project<br>
             eeee
