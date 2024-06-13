@@ -684,10 +684,6 @@ video {
   height: 3rem;
 }
 
-.h-128 {
-  height: 32rem;
-}
-
 .h-5 {
   height: 1.25rem;
 }
@@ -997,6 +993,10 @@ video {
   padding-bottom: 2.5rem;
 }
 
+.pl-6 {
+  padding-left: 1.5rem;
+}
+
 .pt-10 {
   padding-top: 2.5rem;
 }
@@ -1009,24 +1009,12 @@ video {
   padding-top: 0.625rem;
 }
 
-.pr-6 {
-  padding-right: 1.5rem;
-}
-
-.pl-6 {
-  padding-left: 1.5rem;
-}
-
 .text-center {
   text-align: center;
 }
 
 .text-right {
   text-align: right;
-}
-
-.align-baseline {
-  vertical-align: baseline;
 }
 
 .font-\[sans-serif\] {
