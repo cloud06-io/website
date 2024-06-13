@@ -11,6 +11,7 @@ module.exports = {
       },
       width: {
         '128': '32rem',
+        'port-img': '48rem',
       },
       height: {
         '128': '32rem',
