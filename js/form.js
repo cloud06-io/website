@@ -1,8 +1,110 @@
 "use strict";
 
+/*
+/************************************
+ * method replacement for JQuery
+ ************************************
+
+// ** FADE OUT FUNCTION **
+function fadeOut(el) {
+    el.style.opacity = 1;
+    (function fade() {
+        if ((el.style.opacity -= .1) < 0) {
+            el.style.display = "none";
+        } else {
+            requestAnimationFrame(fade);
+        }
+    })();
+};
+
+// ** FADE IN FUNCTION **
+function fadeIn(el) {
+    el.style.opacity = 0;
+    el.style.display = "block";
+    (function fade() {
+        var val = parseFloat(el.style.opacity);
+        if (!((val += .1) > 1)) {
+            el.style.opacity = val;
+            requestAnimationFrame(fade);
+        }
+    })();
+};
+
+function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+const contactForm = document.getElementById("contactForm");
+
+async function handleSubmit(event) {
+  console.log("submit form")
+    event.preventDefault();
+
+    // field validation
+    const emailField = document.getElementById('email');
+    if (!validateEmail(emailField.value)) {
+      fadeIn(document.querySelector('#form-message-warning'));
+      document.querySelector('#form-message-warning').innerHTML = "Email is not valid.";
+      return;
+    }
+
+    const submit = document.querySelector('#submit');
+    submit.disabled = true;
+
+    const spinner = document.querySelector('#processing');
+    spinner.style.display = 'block';
+
+    function displayError(message) {
+      console.error(message);
+      spinner.style.display = 'none';
+      submit.disabled = false;
+      fadeIn(document.querySelector('#form-message-warning'));
+      document.querySelector('#form-message-warning').innerHTML = "Something went wrong. Please try again.";
+    }
+
+    const data = new FormData(event.target);
+    fetch({
+      type: "POST",
+      url: "/contact",
+      contentType: "application/x-www-form-urlencoded",
+      body: data,      
+    }).then(response => {
+      if (response === 'Email sent succesfully') {
+        document.querySelector('#form-message-warning').hide();
+
+
+        setTimeout(function() {
+          fadeIn(document.querySelector('#form-message-success'));
+        }, 1400);
+        setTimeout(function() {
+          fadeOut(document.querySelector('#form-message-success'));
+        }, 8000);
+
+        setTimeout(function() {
+          document.querySelector( '#contactForm' ).each(function() {
+            this.reset();
+          });
+        }, 1400);
+          
+        setTimeout(function() {
+          spinner.style.display = 'none';
+        }, 1400);
+
+      } else {
+        displayError(response);
+      }
+    }).catch(error => {
+      displayError(error);
+    });
+}
+
+contactForm.addEventListener("submit", handleSubmit)
+
+*/
 
 // Form
-var contactForm = function() {
+const contactForm = function() {
   if ($('#contactForm').length > 0 ) {
 
     $("#contactForm").validate( {
