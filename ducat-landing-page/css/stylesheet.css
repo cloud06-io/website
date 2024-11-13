@@ -1,0 +1,165 @@
+html {
+  background: #111015;
+  block-size: 100%;
+  inline-size: 100%;
+  text-align: center;
+  backdrop-filter: blur(11.600000381469727px)
+}
+
+body {
+  overflow-x: hidden;
+  background-image: radial-gradient(69.84% 48.08% at 50% 51.92%, rgba(17, 16, 21, 0) 0%, #111015 100%), url("../assets/dots.png");
+}
+
+.nav {
+  position: sticky;
+  width: 100%;
+  height: 112px;
+  gap: 0px;
+  justify: space-between;
+  opacity: 0px;
+}
+
+.CTA {
+  width: Fixed (1,096.5px)px;
+  height: Hug (324.6px)px;
+  gap: 21px;
+  opacity: 0px;
+}
+
+h1 {
+  font-family: 'DM Sans';
+  font-size: 91.8px;
+  font-weight: 700;
+  line-height: 102px;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+
+h1 > span {
+  
+  background: linear-gradient(90deg, #FBB45F 10.83%, #9063F8 88.81%);
+  /*
+  background: radial-gradient(
+    hsl(100 100% 60%), 
+    hsl(200 100% 60%) 
+  ) fixed;
+  background: conic-gradient(
+    hsl(100 100% 60%), 
+    hsl(200 100% 60%), 
+    hsl(100 100% 60%) 
+  ) fixed;
+  */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 27.6px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #8E8D90;
+}
+
+.fake-scroll {
+  position: absolute;
+  top: 0;
+  width: 1px;
+}
+
+.app-preview {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 2rem;
+}
+
+.preview-text {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
+
+.app-screenshot-container {
+  position: relative;
+  width: 80%;
+  max-width: 1000px;
+  transform-origin: top center;
+  transition: transform 0.5s ease;
+  display: flex;
+  justify-content: center;
+  translate: 0 calc(-1% * (max(var(--scroll), 5) - 5) * 100 / 70);
+  transform: perspective(1000px) rotateX(calc(1deg * (min(var(--scroll), 30) - 30)));
+}
+
+.app-screenshot {
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Gradient border with blur */
+.app-screenshot-container::before {
+  content: '';
+  position: absolute;
+  top: -2.55px;
+  left: -2.55px;
+  right: -2.55px;
+  bottom: -2.55px;
+  background: linear-gradient(90deg, #F6B165 0%, #9164F5 100%);
+  border-radius: 12.55px 12.55px 2.55px 2.55px;
+  z-index: 1;
+  filter: blur(2.290606737136841px);
+}
+
+.app-screenshot-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0a0a0a;
+  border-radius: 10px 10px 0px 0px;
+  z-index: 1;
+}
+
+
+
+
+
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.image {
+  position: relative;
+  width: 880px;
+  height: 620px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  background-image: url('../assets/image.png');
+}
