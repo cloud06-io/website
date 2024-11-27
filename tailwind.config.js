@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.{html,js}"],
+  content: [
+    "./*.{html,js}",
+    './card/*.{html,js}',
+  ],
   theme: {
     backgroundPosition: {
       'center-center': 'center center',
